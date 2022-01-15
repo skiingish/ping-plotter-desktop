@@ -1,8 +1,8 @@
 {
   "name": "ping-plotter-desktop",
-  "productName": "ping-plotter-desktop",
+  "productName": "Ping Plotter",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "For Plotting Pings On A Chart",
   "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",

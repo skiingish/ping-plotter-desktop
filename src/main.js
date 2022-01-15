@@ -4,7 +4,7 @@ const url = require('url');
 var ping = require('ping');
 
 // Set env
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';
 
 const isDev = process.env.NODE_ENV !== 'production' ? true : false;
 const isMac = process.platform === 'darwin' ? true : false;
@@ -24,12 +24,12 @@ const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     title: 'APP Name',
-    width: isDev ? 1600 : 1400,
+    width: isDev ? 1600 : 1000,
     height: 800,
     icon: `${__dirname}/assets/icons/icon.png`,
     resizable: true,
     show: isDev ? true : false,
-    backgroundColor: '#232427',
+    backgroundColor: 'black',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false, // workaround to allow use with Electron 12+
@@ -64,6 +64,38 @@ const menu = [
   ...(isMac ? [{ role: 'appMenu' }] : []),
   {
     role: 'fileMenu',
+  },
+  {
+    label: 'Tools',
+    submenu: [
+      {
+        label: 'Ping 8.8.8.8',
+        accelerator: isMac ? 'Cmd+G' : 'Ctrl+G',
+        click: async () => {
+          launchPingTest('8.8.8.8');
+        },
+      },
+      {
+        label: 'Stop Ping Test',
+        accelerator: isMac ? 'Cmd+S' : 'Ctrl+S',
+        click: async () => {
+          stopPingTest();
+        },
+      },
+      {
+        label: 'Reset',
+        accelerator: isMac
+          ? isDev
+            ? 'Cmd+E'
+            : 'Cmd+R'
+          : isDev
+          ? 'Ctrl+E'
+          : 'Ctrl+R',
+        click: async () => {
+          resetWindow();
+        },
+      },
+    ],
   },
   ...(isDev
     ? [
@@ -103,6 +135,20 @@ let pinghost = async (host) => {
   //console.log(res.time);
   return res;
 };
+
+function launchPingTest(host) {
+  mainWindow.webContents.send('ping:startping', {
+    host,
+  });
+}
+
+function stopPingTest() {
+  mainWindow.webContents.send('ping:stop');
+}
+
+function resetWindow() {
+  mainWindow.webContents.send('window:reset');
+}
 
 //pinghost('192.168.1.1');
 

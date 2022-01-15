@@ -14,15 +14,15 @@
     />
     <title>Ping Plotter 0.1.0</title>
   </head>
-  <body>
+  <body class="bg-secondary">
     <!-- Title / Nav Bar (Not a actually nav bar) -->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-white">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img
-            src=""
+            src="../../assets/images/PingPlotterLogoSmall.png"
             alt="Ping Plotter!"
-            height="26"
+            height="36"
             class="d-inline-block align-text-top"
           />
         </a>
@@ -46,6 +46,16 @@
                     />
                     <label for="floatingInput">Address:</label>
                   </div>
+                  <div class="form-floating mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="pingIntervalTimeInput"
+                      placeholder="1000"
+                      value="1"
+                    />
+                    <label for="floatingInput">Ping Interval (s)</label>
+                  </div>
                   <div class="row g-2">
                     <div class="col-md">
                       <button
@@ -63,11 +73,16 @@
                 </form>
               </div>
               <div class="shadow p-3 mb-5 bg-light rounded content">
+                <h5 id="pingStatsText"></h5>
                 <canvas id="myChart"></canvas>
                 <!-- Chart.js chart will be drawn inside this DIV -->
                 <div class="d-grid gap-2 d-md-block">
-                  <button class="btn btn-primary" type="button">Stop</button>
-                  <button class="btn btn-primary" type="button">Reset</button>
+                  <button class="btn btn-primary" id="stopBtn" type="button">
+                    Stop
+                  </button>
+                  <button class="btn btn-primary" id="resetBtn" type="button">
+                    Reset
+                  </button>
                 </div>
               </div>
             </div>
