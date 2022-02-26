@@ -1,7 +1,12 @@
 const { app, BrowserWindow, Menu, ipcMain } = require('electron');
 const path = require('path');
-const url = require('url');
 var ping = require('ping');
+
+// Auto Updates
+// require('update-electron-app')({
+//   repo: 'skiingish/ping-plotter-desktop',
+//   updateInterval: '1 hour',
+// });
 
 // Set env
 process.env.NODE_ENV = 'production';

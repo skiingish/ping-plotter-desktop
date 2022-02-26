@@ -24,9 +24,21 @@ body {
   align-items: center;
 }
 
-.container {
+.panel {
+  background-color: #141414;
+  color: white;
 }
 
 .box-label {
   font-weight: bold;
+}
+
+input[type='text'] {
+  background: transparent;
+  color: white;
+}
+
+input[type='text']:focus {
+  background-color: transparent;
+  color: white;
 }

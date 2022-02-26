@@ -16,7 +16,7 @@
   </head>
   <body class="bg-secondary">
     <!-- Title / Nav Bar (Not a actually nav bar) -->
-    <nav class="navbar navbar-light bg-white">
+    <!-- <nav class="navbar navbar-light bg-white">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img
@@ -27,7 +27,7 @@
           />
         </a>
       </div>
-    </nav>
+    </nav> -->
 
     <!-- Select Address To Ping - Start Test -->
     <div class="content show">
@@ -35,7 +35,7 @@
         <header class="container overflow-hidden">
           <div class="container">
             <div class="row row-cols-1">
-              <div class="shadow p-3 mb-5 bg-light rounded">
+              <div class="panel shadow p-3 mb-5 rounded">
                 <form>
                   <div class="form-floating mb-3">
                     <input
@@ -54,7 +54,7 @@
                       placeholder="1000"
                       value="1"
                     />
-                    <label for="floatingInput">Ping Interval (s)</label>
+                    <label for="floatingInput">Ping Interval (seconds)</label>
                   </div>
                   <div class="row g-2">
                     <div class="col-md">
@@ -72,10 +72,13 @@
                   </div>
                 </form>
               </div>
-              <div class="shadow p-3 mb-5 bg-light rounded content">
+              <div class="panel shadow p-3 mb-5 rounded content">
                 <h5 id="pingStatsText"></h5>
-                <canvas id="myChart"></canvas>
-                <!-- Chart.js chart will be drawn inside this DIV -->
+                <div class="container p-3">
+                  <canvas id="myChart">
+                    <!-- Chart will be drawn here -->
+                  </canvas>
+                </div>
                 <div class="d-grid gap-2 d-md-block">
                   <button class="btn btn-primary" id="stopBtn" type="button">
                     Stop
